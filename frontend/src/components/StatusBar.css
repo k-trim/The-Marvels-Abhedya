@@ -1,0 +1,11 @@
+.status-bar .status-bar__separator {
+  color: var(--outline-variant);
+  font-size: 0.8rem;
+}
+
+.status-bar .text-green {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--primary-container);
+}

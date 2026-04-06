@@ -1,0 +1,249 @@
+.health-page {
+  padding-bottom: 80px;
+}
+
+.health__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+}
+
+/* Gauge card */
+.health__top {
+  margin-bottom: var(--space-xl);
+}
+
+.health__gauge-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xl);
+  padding: var(--space-xl);
+}
+
+.health__gauge {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  flex-shrink: 0;
+}
+
+.health__gauge-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.health__gauge-arc {
+  transition: stroke-dashoffset 1.5s ease;
+}
+
+.health__gauge-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.health__gauge-value {
+  font-family: var(--font-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--primary-container);
+  line-height: 1;
+}
+
+.health__gauge-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--on-surface-variant);
+  margin-top: 4px;
+}
+
+.health__gauge-status {
+  display: flex;
+  gap: var(--space-md);
+  align-items: flex-start;
+}
+
+.health__gauge-status .icon {
+  font-size: 28px;
+  margin-top: 2px;
+}
+
+/* Cards row */
+.health__cards-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+  margin-bottom: var(--space-xl);
+}
+
+.health__card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-md);
+}
+
+/* Defense progress bars */
+.health__defense-bars {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.health__defense-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.health__defense-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+
+.health__defense-label .mono {
+  font-size: 0.72rem;
+}
+
+/* Connection visual */
+.health__connection-visual {
+  margin-top: var(--space-lg);
+}
+
+.health__signal-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 60px;
+  margin-bottom: var(--space-md);
+}
+
+.health__signal-bar {
+  flex: 1;
+  background: var(--secondary-container);
+  opacity: 0.6;
+  animation: fadeIn 0.5s ease both;
+  min-width: 0;
+}
+
+.health__signal-bar:nth-child(odd) {
+  opacity: 0.8;
+}
+
+.health__connection-stats {
+  display: flex;
+  gap: var(--space-xl);
+}
+
+.health__connection-stats > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.health__connection-stats .mono {
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Events */
+.health__events {
+  margin-bottom: var(--space-xl);
+}
+
+.health__events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.health__event {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: var(--surface-container);
+  border: var(--ghost-border);
+  transition: background var(--transition-fast);
+}
+
+.health__event:hover {
+  background: var(--surface-container-high);
+}
+
+.health__event-icon {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.health__event-icon--warning {
+  background: rgba(255,180,171,0.10);
+  color: var(--error);
+}
+
+.health__event-icon--success {
+  background: rgba(0,255,65,0.08);
+  color: var(--primary-container);
+}
+
+.health__event-icon--info {
+  background: rgba(0,162,253,0.08);
+  color: var(--secondary-container);
+}
+
+.health__event-content {
+  flex: 1;
+}
+
+.health__event-title {
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.health__event-time {
+  font-size: 0.75rem;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Audit CTA */
+.health__audit-cta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--space-3xl);
+  background: var(--surface-container);
+  animation: breathe 4s ease-in-out infinite;
+}
+
+.health__audit-left {
+  display: flex;
+  gap: var(--space-md);
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .health__gauge-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  .health__cards-row {
+    grid-template-columns: 1fr;
+  }
+  .health__event {
+    flex-wrap: wrap;
+  }
+}
