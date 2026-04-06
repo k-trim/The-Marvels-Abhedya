@@ -1,0 +1,532 @@
+/* ============================================================
+   SecureVault — "The Synthetic Fortress" Design System
+   Extracted from Stitch Design Tokens
+   ============================================================ */
+
+/* ---------- CSS Custom Properties (Design Tokens) ---------- */
+:root {
+  /* Surface Foundation (Tonal Layering) */
+  --surface-lowest:        #0E0E0E;
+  --surface:               #131313;
+  --surface-container-low: #1B1B1B;
+  --surface-container:     #1F1F1F;
+  --surface-container-high:#2A2A2A;
+  --surface-highest:       #353535;
+  --surface-bright:        #393939;
+  --surface-variant:       #353535;
+
+  /* Primary — Cyber Green */
+  --primary:               #EBFFE2;
+  --primary-container:     #00FF41;
+  --primary-fixed:         #72FF70;
+  --primary-fixed-dim:     #00E639;
+  --on-primary:            #003907;
+  --on-primary-container:  #007117;
+  --on-primary-fixed:      #002203;
+
+  /* Secondary — Electric Blue */
+  --secondary:             #98CBFF;
+  --secondary-container:   #00A2FD;
+  --secondary-fixed:       #CFE5FF;
+  --secondary-fixed-dim:   #98CBFF;
+  --on-secondary:          #003354;
+  --on-secondary-container:#003558;
+
+  /* Tertiary */
+  --tertiary:              #FCF8F8;
+  --tertiary-container:    #DFDCDB;
+  --on-tertiary:           #313030;
+
+  /* Error */
+  --error:                 #FFB4AB;
+  --error-container:       #93000A;
+  --on-error:              #690005;
+
+  /* Text / Surfaces */
+  --on-surface:            #E2E2E2;
+  --on-surface-variant:    #B9CCB2;
+  --on-background:         #E2E2E2;
+  --inverse-surface:       #E2E2E2;
+  --inverse-on-surface:    #303030;
+  --inverse-primary:       #006E16;
+
+  /* Outlines */
+  --outline:               #84967E;
+  --outline-variant:       #3B4B37;
+
+  /* Typography Families */
+  --font-display:   'Space Grotesk', sans-serif;
+  --font-body:      'Inter', sans-serif;
+  --font-mono:      'JetBrains Mono', monospace;
+
+  /* Spacing Scale */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+  --space-xl:  32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* The "No-Line" philosophy: 0px radii everywhere */
+  --radius: 0px;
+
+  /* Shadows: ambient, felt not seen */
+  --shadow-ambient: 0 4px 40px rgba(0,0,0,0.04);
+
+  /* Ghost Borders */
+  --ghost-border: 1px solid rgba(59,75,55,0.15);
+  --ghost-border-active: 1px solid rgba(59,75,55,0.30);
+
+  /* Transition */
+  --transition-fast: 150ms ease;
+  --transition-base: 250ms ease;
+  --transition-slow: 400ms ease;
+
+  /* Sidebar width */
+  --sidebar-width: 260px;
+}
+
+/* ---------- Global Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--surface);
+  color: var(--on-surface);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.125rem; }
+
+code, pre, .mono {
+  font-family: var(--font-mono);
+}
+
+a {
+  color: var(--secondary);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+a:hover { color: var(--secondary-fixed); }
+
+button {
+  cursor: pointer;
+  font-family: var(--font-body);
+  border: none;
+  outline: none;
+}
+
+input, textarea {
+  font-family: var(--font-mono);
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--on-surface);
+}
+
+ul, ol { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--surface-lowest); }
+::-webkit-scrollbar-thumb {
+  background: var(--outline-variant);
+  border-radius: 0;
+}
+
+/* ---------- Layout Shell ---------- */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  padding: var(--space-2xl) var(--space-3xl);
+  background: var(--surface-container-low);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ---------- Utility Classes ---------- */
+.text-green  { color: var(--primary-container); }
+.text-blue   { color: var(--secondary-container); }
+.text-muted  { color: var(--on-surface-variant); }
+.text-error  { color: var(--error); }
+.text-mono   { font-family: var(--font-mono); }
+.text-display{ font-family: var(--font-display); }
+
+.bg-lowest   { background: var(--surface-lowest); }
+.bg-surface  { background: var(--surface); }
+.bg-container{ background: var(--surface-container); }
+.bg-high     { background: var(--surface-container-high); }
+.bg-highest  { background: var(--surface-highest); }
+
+/* ---------- Glass Overlay ---------- */
+.glass {
+  background: rgba(53,53,53,0.60);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: var(--ghost-border);
+}
+
+/* ---------- Glow Effects ---------- */
+.glow-green {
+  box-shadow: 0 0 10px rgba(0,255,65,0.30);
+}
+.glow-green-subtle {
+  box-shadow: inset 0 0 2px rgba(0,230,57,0.15);
+}
+.glow-blue {
+  box-shadow: 0 0 10px rgba(0,162,253,0.30);
+}
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0.5; }
+}
+
+@keyframes scanLine {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes breathe {
+  0%, 100% { box-shadow: inset 0 0 2px rgba(0,230,57,0.15); }
+  50%      { box-shadow: inset 0 0 8px rgba(0,230,57,0.30); }
+}
+
+.animate-in {
+  animation: fadeIn var(--transition-slow) ease both;
+}
+
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+/* ---------- Card Base ---------- */
+.card {
+  background: var(--surface-container);
+  border: var(--ghost-border);
+  border-radius: var(--radius);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.card:hover {
+  background: var(--surface-container-high);
+  border-color: rgba(59,75,55,0.25);
+}
+
+.card--elevated {
+  background: var(--surface-highest);
+}
+
+.card--zero-knowledge {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+.card--zero-knowledge::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--primary-fixed-dim);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 14px 28px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background: var(--primary-container);
+  color: var(--on-primary-fixed);
+}
+
+.btn-primary:hover {
+  box-shadow: 0 0 20px rgba(0,255,65,0.30);
+  transform: translateY(-1px);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--secondary);
+  border: 1px solid var(--outline);
+}
+
+.btn-secondary:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 0 10px rgba(0,162,253,0.15);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--on-surface-variant);
+  padding: 10px 16px;
+}
+
+.btn-ghost:hover {
+  color: var(--on-surface);
+  background: rgba(255,255,255,0.05);
+}
+
+.btn-danger {
+  background: transparent;
+  color: var(--error);
+  border: 1px solid rgba(255,180,171,0.3);
+}
+
+.btn-danger:hover {
+  background: rgba(147,0,10,0.2);
+  border-color: var(--error);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 0.75rem;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--on-surface-variant);
+  border: var(--ghost-border);
+}
+
+.btn-icon:hover {
+  color: var(--on-surface);
+  background: rgba(255,255,255,0.05);
+}
+
+/* ---------- Input Fields ---------- */
+.input-group {
+  position: relative;
+  margin-bottom: var(--space-lg);
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-body);
+}
+
+.input-field {
+  width: 100%;
+  background: var(--surface-lowest);
+  border-bottom: 2px solid var(--outline-variant);
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: var(--on-surface);
+  font-family: var(--font-mono);
+  transition: border-color var(--transition-base);
+}
+
+.input-field:focus {
+  border-bottom-color: var(--secondary-container);
+  box-shadow: 0 2px 12px rgba(0,162,253,0.10);
+}
+
+.input-field::placeholder {
+  color: rgba(226,226,226,0.3);
+}
+
+/* ---------- Status Bar ---------- */
+.status-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lg);
+  padding: var(--space-md) var(--space-xl);
+  background: var(--surface-lowest);
+  border-top: var(--ghost-border);
+  position: fixed;
+  bottom: 0;
+  left: var(--sidebar-width);
+  right: 0;
+  z-index: 100;
+}
+
+.status-bar__dot {
+  width: 6px;
+  height: 6px;
+  background: var(--primary-container);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+.status-bar__text {
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--on-surface-variant);
+}
+
+/* ---------- Badge / Chip ---------- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+}
+
+.badge--green {
+  background: rgba(0,255,65,0.10);
+  color: var(--primary-container);
+  border: 1px solid rgba(0,255,65,0.20);
+}
+
+.badge--blue {
+  background: rgba(0,162,253,0.10);
+  color: var(--secondary-container);
+  border: 1px solid rgba(0,162,253,0.20);
+}
+
+.badge--red {
+  background: rgba(255,180,171,0.10);
+  color: var(--error);
+  border: 1px solid rgba(255,180,171,0.20);
+}
+
+/* ---------- Progress Bar ---------- */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: var(--surface-highest);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.progress-bar__fill {
+  height: 100%;
+  background: var(--primary-container);
+  transition: width var(--transition-slow);
+}
+
+/* ---------- Strength Meter ---------- */
+.strength-meter {
+  display: flex;
+  gap: 4px;
+  margin: var(--space-sm) 0;
+}
+
+.strength-meter__bar {
+  flex: 1;
+  height: 3px;
+  background: var(--surface-highest);
+  transition: background var(--transition-base);
+}
+
+.strength-meter__bar.active {
+  background: var(--primary-container);
+}
+
+/* ---------- Material Icon Helper ---------- */
+.icon {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+.icon-sm { font-size: 16px; }
+.icon-lg { font-size: 28px; }
+.icon-xl { font-size: 36px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1024px) {
+  .main-content {
+    margin-left: 0;
+    padding: var(--space-lg) var(--space-xl);
+    padding-bottom: 80px;
+  }
+  .status-bar {
+    left: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+
+  .main-content {
+    padding: var(--space-md);
+    padding-bottom: 80px;
+  }
+}
